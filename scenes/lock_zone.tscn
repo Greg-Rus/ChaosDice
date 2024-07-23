@@ -1,0 +1,67 @@
+[gd_scene load_steps=3 format=3 uid="uid://br3bqtprjb3hy"]
+
+[ext_resource type="Script" path="res://scenes/lock_zone.gd" id="1_jd6hj"]
+[ext_resource type="PackedScene" uid="uid://cjd5a8gi477sc" path="res://scenes/die_slot.tscn" id="1_wgoys"]
+
+[node name="LockZonePanel" type="Panel" node_paths=PackedStringArray("dieSlots")]
+offset_right = 800.0
+offset_bottom = 200.0
+script = ExtResource("1_jd6hj")
+dieSlots = [NodePath("HBoxContainer/DieSlot"), NodePath("HBoxContainer/DieSlot2"), NodePath("HBoxContainer/DieSlot3"), NodePath("HBoxContainer/DieSlot4"), NodePath("HBoxContainer/DieSlot5"), NodePath("HBoxContainer/DieSlot6")]
+
+[node name="HBoxContainer" type="HFlowContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -340.0
+offset_top = -40.0
+offset_right = 340.0
+offset_bottom = 40.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/h_separation = 40
+
+[node name="DieSlot" parent="HBoxContainer" instance=ExtResource("1_wgoys")]
+layout_mode = 2
+
+[node name="DieSlot2" parent="HBoxContainer" instance=ExtResource("1_wgoys")]
+layout_mode = 2
+
+[node name="DieSlot3" parent="HBoxContainer" instance=ExtResource("1_wgoys")]
+layout_mode = 2
+
+[node name="DieSlot4" parent="HBoxContainer" instance=ExtResource("1_wgoys")]
+layout_mode = 2
+
+[node name="DieSlot5" parent="HBoxContainer" instance=ExtResource("1_wgoys")]
+layout_mode = 2
+
+[node name="DieSlot6" parent="HBoxContainer" instance=ExtResource("1_wgoys")]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 816.0
+offset_top = 82.0
+offset_right = 951.0
+offset_bottom = 122.0
+
+[node name="Label" type="Label" parent="Button"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -23.0
+offset_top = -11.5
+offset_right = 23.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "End Turn"
+
+[connection signal="pressed" from="Button" to="." method="_on_end_turn_button_pressed"]

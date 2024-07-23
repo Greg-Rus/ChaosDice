@@ -1,0 +1,46 @@
+[gd_scene load_steps=9 format=3 uid="uid://bje0q6cgd4780"]
+
+[ext_resource type="Script" path="res://scenes/die.gd" id="1_pc326"]
+[ext_resource type="Texture2D" uid="uid://dbe04kjk1y4ie" path="res://art/dice/dice_1.png" id="2_ga0co"]
+[ext_resource type="Texture2D" uid="uid://bewc38fdbghlt" path="res://art/dice/dice_2.png" id="3_77x5r"]
+[ext_resource type="Texture2D" uid="uid://1bjww72oj28e" path="res://art/dice/dice_3.png" id="4_nynca"]
+[ext_resource type="Texture2D" uid="uid://bx0q4rysneu55" path="res://art/dice/dice_4.png" id="5_r3lcx"]
+[ext_resource type="Texture2D" uid="uid://dckfifnjvy3rb" path="res://art/dice/dice_5.png" id="6_4vdny"]
+[ext_resource type="Texture2D" uid="uid://bjnw6ayenoweq" path="res://art/dice/dice_6.png" id="7_ounpb"]
+[ext_resource type="Texture2D" uid="uid://df1vo63m2nphr" path="res://art/dice/dice_empty.png" id="8_e4n2q"]
+
+[node name="Die" type="Control"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -32.0
+offset_top = -32.0
+offset_right = 32.0
+offset_bottom = 32.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(32, 32)
+mouse_filter = 1
+script = ExtResource("1_pc326")
+faceTextures = Array[Texture]([ExtResource("2_ga0co"), ExtResource("3_77x5r"), ExtResource("4_nynca"), ExtResource("5_r3lcx"), ExtResource("6_4vdny"), ExtResource("7_ounpb")])
+dotColors = Array[Color]([Color(0.6, 0, 0, 1), Color(0.6, 0.54, 0, 1), Color(0.0700001, 0.6, 0, 1), Color(0, 0.49, 0.6, 1), Color(0, 0.14, 0.6, 1), Color(0.6, 0, 0.56, 1)])
+
+[node name="DotSprite" type="TextureRect" parent="."]
+unique_name_in_owner = true
+self_modulate = Color(0, 0, 0, 1)
+layout_mode = 0
+offset_right = 64.0
+offset_bottom = 64.0
+texture = ExtResource("8_e4n2q")
+
+[node name="FaceSprite" type="TextureRect" parent="DotSprite"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_right = 64.0
+offset_bottom = 64.0
+texture = ExtResource("2_ga0co")
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]

@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://cjd5a8gi477sc"]
+
+[ext_resource type="Texture2D" uid="uid://iv6vjoicsp6e" path="res://art/panel_metalBoltsDark.png" id="1_1arnk"]
+
+[node name="DieSlot" type="Control"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 80.0
+offset_bottom = 80.0
+pivot_offset = Vector2(40, 40)
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 80.0
+offset_bottom = 80.0
+texture = ExtResource("1_1arnk")
