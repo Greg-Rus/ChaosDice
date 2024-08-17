@@ -1,4 +1,5 @@
 extends Node2D
+class_name Main
 
 var free_dice = {}
 var locked_dice = {}
@@ -24,6 +25,13 @@ func _ready():
 		free_dice[i] = die
 	
 func on_die_clicked(die : Die):
+	if free_dice.has(die.die_id):
+		lock_die(die)
+		EventBus.free_die_selected.emit(die)
+	else:
+		EventBus.locked_die_selected.emit(die)
+	
+func lock_die(die : Die):
 	free_dice.erase(die.die_id)
 	locked_dice[die.die_id] = die
 	

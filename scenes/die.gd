@@ -28,5 +28,4 @@ func _on_gui_input(event):
 	if event is InputEventMouseButton:
 		var mouseEvent = event as InputEventMouseButton
 		if mouseEvent.pressed == true:
-			print(str(number))
 			EventBus.die_clicked.emit(self)
