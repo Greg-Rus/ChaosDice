@@ -4,8 +4,8 @@ extends Panel
 var next_free_slot_index = 0
 
 func _ready():
-	EventBus.free_die_selected.connect(on_free_died_selected)
-	EventBus.end_turn.connect(on_end_turn)
+	EventBus.die_locked.connect(on_die_locked)
+	EventBus.end_turn_clicked.connect(on_end_turn)
 
 func getSlotByIndex(index: int) -> Control:
 	return dieSlots[index]
@@ -16,9 +16,9 @@ func get_next_free_slot() -> Control:
 	return slot
 
 func _on_end_turn_button_pressed():
-	EventBus.end_turn.emit()
+	EventBus.end_turn_clicked.emit()
 	
-func on_free_died_selected(die:Die):
+func on_die_locked(die:Die):
 	die.reparent(get_next_free_slot())
 	var destination = Vector2(8, 8)
 	var tween = get_tree().create_tween()

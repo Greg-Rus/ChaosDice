@@ -14,8 +14,8 @@ var re_rolls_remaining = re_rolls_count
 
 func _ready():
 	EventBus.die_clicked.connect(on_die_clicked)
-	EventBus.re_roll.connect(on_re_roll)
-	EventBus.end_turn.connect(on_end_turn)
+	EventBus.re_roll_clicked.connect(do_re_roll)
+	EventBus.end_turn_clicked.connect(on_end_turn)
 	EventBus.on_remaining_re_rolls_changed.emit(re_rolls_remaining)
 	
 	for i in initial_die_count:
@@ -27,20 +27,23 @@ func _ready():
 func on_die_clicked(die : Die):
 	if free_dice.has(die.die_id):
 		lock_die(die)
-		EventBus.free_die_selected.emit(die)
 	else:
 		EventBus.locked_die_selected.emit(die)
 	
 func lock_die(die : Die):
 	free_dice.erase(die.die_id)
 	locked_dice[die.die_id] = die
+	EventBus.die_locked.emit(die)
 	
-func on_re_roll():
+func do_re_roll():
 	if(re_rolls_remaining == 0):
 		return
 	re_rolls_remaining -= 1
 	EventBus.on_remaining_re_rolls_changed.emit(re_rolls_remaining)
+	roll_free_dice()
+	EventBus.dice_rolled.emit()
 	
+func roll_free_dice():
 	for die_id in free_dice.keys():
 		var die = free_dice[die_id] as Die
 		die.roll()
@@ -52,4 +55,7 @@ func on_end_turn():
 		free_dice[die.die_id] = die
 	locked_dice.clear()
 	roll_zone.reset_dice(free_dice.values())
-	EventBus.re_roll.emit()
+	start_new_turn()
+
+func start_new_turn():
+	EventBus.turn_start.emit()

@@ -23,7 +23,7 @@ func reset_dice(dice : Array):
 		die.reparent(slots[i], false)
 
 func _on_re_roll_button_pressed():
-	EventBus.re_roll.emit()
+	EventBus.re_roll_clicked.emit()
 
 func on_re_rolls_changed(re_rolls : int):
 	re_rolls_number_label.text = "Remaining Rerolls: " + str(re_rolls)
