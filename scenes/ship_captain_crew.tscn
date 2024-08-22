@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dw6klvtgwhxwh"]
+
+[ext_resource type="Script" path="res://ship_captain_crew_game.gd" id="1_ry4ei"]
+
+[node name="ShipCaptainCrew" type="Node"]
+script = ExtResource("1_ry4ei")

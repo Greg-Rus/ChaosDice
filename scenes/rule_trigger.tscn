@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://hts8cuxfrhoh"]
+
+[ext_resource type="Script" path="res://rule_trigger.gd" id="1_dwro5"]
+
+[node name="RuleTrigger" type="Node"]
+script = ExtResource("1_dwro5")

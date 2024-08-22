@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://clsq6sbpnroqw"]
 
-[ext_resource type="Script" path="res://rules_engine.gd" id="1_qvmpy"]
+[ext_resource type="Script" path="res://scenes/rules_engine.gd" id="1_qvmpy"]
 
 [node name="RulesEngine" type="Node"]
 script = ExtResource("1_qvmpy")
