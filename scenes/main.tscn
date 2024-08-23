@@ -1,17 +1,17 @@
-[gd_scene load_steps=8 format=3 uid="uid://bgy38152rkkkn"]
+[gd_scene load_steps=9 format=3 uid="uid://bgy38152rkkkn"]
 
 [ext_resource type="Script" path="res://scenes/main.gd" id="1_u8x3p"]
 [ext_resource type="PackedScene" uid="uid://bljc7cvq4myj" path="res://scenes/roll_zone.tscn" id="2_jgee7"]
 [ext_resource type="PackedScene" uid="uid://bje0q6cgd4780" path="res://scenes/die.tscn" id="2_ui44y"]
 [ext_resource type="PackedScene" uid="uid://br3bqtprjb3hy" path="res://scenes/lock_zone.tscn" id="3_oo3qr"]
 [ext_resource type="PackedScene" uid="uid://hts8cuxfrhoh" path="res://scenes/rule_trigger.tscn" id="5_ir8gu"]
+[ext_resource type="PackedScene" uid="uid://dw6klvtgwhxwh" path="res://scenes/ship_captain_crew.tscn" id="5_l10al"]
 [ext_resource type="PackedScene" uid="uid://dw6c88kbahi6j" path="res://scenes/specific_locked_dice_condition.tscn" id="5_lfov8"]
 [ext_resource type="PackedScene" uid="uid://cj5mfihp8uli2" path="res://scenes/sequetial_rule_condition.tscn" id="6_sbmgr"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_u8x3p")
 die_scene = ExtResource("2_ui44y")
-initial_die_count = 6
 
 [node name="UI" type="Control" parent="."]
 layout_mode = 3
@@ -36,15 +36,17 @@ offset_top = 900.0
 offset_right = 1200.0
 offset_bottom = 1100.0
 
-[node name="OnDiceLockedTirgger" parent="." instance=ExtResource("5_ir8gu")]
+[node name="ShipCaptainCrew" parent="." instance=ExtResource("5_l10al")]
 
-[node name="ShipCaptainCrewValues" parent="OnDiceLockedTirgger" instance=ExtResource("6_sbmgr")]
+[node name="OnDiceLockedTirgger" parent="ShipCaptainCrew" instance=ExtResource("5_ir8gu")]
 
-[node name="Has_6" parent="OnDiceLockedTirgger/ShipCaptainCrewValues" instance=ExtResource("5_lfov8")]
+[node name="ShipCaptainCrewValues" parent="ShipCaptainCrew/OnDiceLockedTirgger" instance=ExtResource("6_sbmgr")]
+
+[node name="Has_6" parent="ShipCaptainCrew/OnDiceLockedTirgger/ShipCaptainCrewValues" instance=ExtResource("5_lfov8")]
 specific_locked_dice = Array[int]([6])
 
-[node name="Has_5" parent="OnDiceLockedTirgger/ShipCaptainCrewValues" instance=ExtResource("5_lfov8")]
+[node name="Has_5" parent="ShipCaptainCrew/OnDiceLockedTirgger/ShipCaptainCrewValues" instance=ExtResource("5_lfov8")]
 specific_locked_dice = Array[int]([5])
 
-[node name="Has_4" parent="OnDiceLockedTirgger/ShipCaptainCrewValues" instance=ExtResource("5_lfov8")]
+[node name="Has_4" parent="ShipCaptainCrew/OnDiceLockedTirgger/ShipCaptainCrewValues" instance=ExtResource("5_lfov8")]
 specific_locked_dice = Array[int]([4])

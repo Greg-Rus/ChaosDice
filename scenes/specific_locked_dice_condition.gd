@@ -3,12 +3,6 @@ class_name SpecificLockedDiceCondition
 
 @export var specific_locked_dice : Array[int]
 
-#func _ready():
-	#EventBus.die_locked.connect(on_die_locked)
-	#
-#func on_die_locked(die):
-	#print("Testing for pattern" + str(specific_locked_dice) + " Result: " +str(test()))
-
 func test() -> bool:
 	var result_found : bool = false
 

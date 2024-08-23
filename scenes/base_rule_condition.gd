@@ -1,6 +1,8 @@
 extends Node
 class_name BaseRuleCondition
 
+signal rule_status_changed(is_met : bool)
+
 @export var is_triggered : bool = false:
 	set(new_value):
 		is_triggered = process_result(new_value)
